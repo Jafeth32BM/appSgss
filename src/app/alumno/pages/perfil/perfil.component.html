@@ -1,0 +1,96 @@
+<h1 class="enca">
+  Informacion de <i>{{ alumn.nombres | titlecase }}</i>
+</h1>
+<div class="container">
+  <div class="row">
+    <!-- PARTE UNO -->
+    <div class="col-sm">
+      <h3 class="datosAlum">No. Registro</h3>
+      <p class="getDatos">{{ alumn.noregistro }}</p>
+      <h3 class="datosAlum">CURP</h3>
+      <p class="getDatos">{{ alumn.curp | uppercase }}</p>
+      <h3 class="datosAlum">Apellido Paterno</h3>
+      <p class="getDatos">{{ alumn.apaterno | titlecase }}</p>
+      <h3 class="datosAlum">Apellido Materno</h3>
+      <p class="getDatos">{{ alumn.amaterno | titlecase }}</p>
+      <h3 class="datosAlum">Nombre(s)</h3>
+      <p class="getDatos">{{ alumn.nombres | titlecase }}</p>
+    </div>
+    <!-- PARTE DOS -->
+    <div class="col-sm">
+      <form [formGroup]="perfilForm" (ngSubmit)="guardar()">
+        <div class="col">
+          <h3 class="datosAlum">Sexo</h3>
+          <!-- radios -->
+          <div class="col">
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="radio"
+                value="masculino"
+                formControlName="genero"
+                id="masculino"
+              />
+              <label class="form-check-label" for="masculino">
+                Masculino
+              </label>
+            </div>
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="radio"
+                value="femenino"
+                formControlName="genero"
+                id="femenino"
+              />
+              <!--//cheked-->
+              <label class="form-check-label" for="femenino"> Femenino </label>
+            </div>
+          </div>
+          <!--  -->
+          <h3 class="datosAlum">Correo</h3>
+          <mat-form-field class="full">
+            <input
+              type="email"
+              matInput
+              formControlName="correo"
+              placeholder="Ingresa tu correo institucional"
+            />
+            <mat-hint>Ingresa un correo</mat-hint>
+          </mat-form-field>
+          <h3 class="datosAlum">Telefono</h3>
+          <mat-form-field class="full" appearance="fill">
+            <input
+              type="tel"
+              matInput
+              formControlName="telefono"
+              placeholder="55-12-34-56-78"
+            />
+            <mat-icon matSuffix>mode_edit</mat-icon>
+          </mat-form-field>
+        </div>
+        <div class="row">
+          <div class="col">
+            <button
+              mat-icon-button
+              color="primary"
+              class="float-end"
+              style="font-size: 1.5em"
+              type="submit"
+            >
+              Guardar
+              <mat-icon>save</mat-icon>
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- <span>Valor del formulario</span>
+<pre> {{ perfilForm.value | json }}</pre>
+<span>Valor de alumno</span>
+<pre> {{ alumno | json }}</pre>
+<span>Valid</span>
+<pre>{{ perfilForm.valid }}</pre> -->

@@ -1,0 +1,53 @@
+<mat-sidenav-container fullscreen>
+  <mat-sidenav #sidenav mode="push">
+    <mat-toolbar color="primary">
+      <span>Menú </span>
+      <span class="spacer"></span>
+      <button mat-icon-button (click)="sidenav.toggle()">
+        <mat-icon>menu_open</mat-icon>
+      </button>
+    </mat-toolbar>
+    <mat-nav-list>
+      <a routerLink="./perfil" mat-list-item (click)="sidenav.toggle()">
+        <mat-icon mat-list-icon>account_circle</mat-icon>
+        <span>Perfil</span>
+      </a>
+      <a routerLink="./status" mat-list-item (click)="sidenav.toggle()">
+        <mat-icon mat-list-icon>check</mat-icon>
+        <span>Documentos a subir</span>
+      </a>
+      <a routerLink="./escolar" mat-list-item (click)="sidenav.toggle()">
+        <mat-icon mat-list-icon>school</mat-icon>
+        <span>Datos academicos</span>
+      </a>
+      <a routerLink="./empresa" mat-list-item (click)="sidenav.toggle()">
+        <mat-icon mat-list-icon>business</mat-icon>
+        <span>Datos de la empresa</span>
+      </a>
+      <a mat-list-item (click)="logout()">
+        <mat-icon mat-list-icon>logout</mat-icon>
+        <span>Salir</span>
+      </a>
+    </mat-nav-list>
+  </mat-sidenav>
+
+  <mat-toolbar>
+    <button mat-icon-button (click)="sidenav.toggle()">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <span
+      >{{ alumn.nombres | titlecase }} {{ alumn.apaterno | titlecase }}
+      {{ alumn.amaterno | titlecase }}</span
+    >
+    <span class="spacer"></span>
+    <span>No. de registro: {{ alumn.noregistro }}</span>
+    <button mat-button (click)="logout()">
+      <mat-icon mat-list-icon>logout</mat-icon>
+      Salir
+    </button>
+  </mat-toolbar>
+
+  <div class="container">
+    <router-outlet></router-outlet>
+  </div>
+</mat-sidenav-container>

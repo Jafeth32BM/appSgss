@@ -1,0 +1,126 @@
+<h3 class="datosAlum">Algun titulo</h3>
+<!-- Inicio form -->
+<form action="">
+  <div class="container">
+    <div class="row">
+      <div class="row">
+        <!-- campo Empresa -->
+        <h3 class="datosAlum">Nombre de la empresa</h3>
+        <!-- input empresa -->
+        <mat-form-field class="full" appearance="fill">
+          <mat-label>Empresa</mat-label>
+          <input matInput placeholder="Nombre de la empresa" value="" />
+        </mat-form-field>
+        <!-- campo Dirección  -->
+        <h3 class="datosAlum">Dirección de la empresa</h3>
+        <!-- input Dirección  -->
+        <mat-form-field class="full" appearance="fill">
+          <mat-label>Dirección </mat-label>
+          <input matInput placeholder="Dirección  de la empresa" value="" />
+        </mat-form-field>
+        <!-- campo Municipio  -->
+        <h3 class="datosAlum">Municipio</h3>
+        <!-- input Municipio  -->
+        <mat-form-field class="full" appearance="fill">
+          <mat-label>Municipio </mat-label>
+          <input matInput placeholder="Municipio" value="" />
+        </mat-form-field>
+      </div>
+      <div class="col-sm">
+        <!-- selector para sector -->
+        <h3 class="datosAlum">Sector</h3>
+        <mat-form-field class="full">
+          <mat-select [formControl]="sectorControl" required>
+            <mat-option *ngFor="let sector of sectores" [value]="sector">{{
+              sector.nombre
+            }}</mat-option>
+          </mat-select>
+          <mat-error *ngIf="sectorControl.hasError('required')">
+            Selecciona tu sector
+          </mat-error>
+        </mat-form-field>
+                <!-- Campo Asesor -->
+        <h3 class="datosAlum">Asesor Externo</h3>
+        <mat-form-field class="full" appearance="fill">
+          <mat-label>Asesor</mat-label>
+          <input
+            matInput
+            placeholder="Asesor asignado por la empresa"
+            value=""
+          />
+        </mat-form-field>
+        <!-- Campo puesto -->
+        <h3 class="datosAlum">Puesto</h3>
+        <mat-form-field class="full" appearance="fill">
+          <mat-label>Puesto del asesor </mat-label>
+          <input
+            matInput
+            placeholder="Puesto que tiene el asesor externo en la empresa"
+            value=""
+          />
+        </mat-form-field>
+      </div>
+      <div class="col-sm">
+        <!-- selector para programa -->
+        <h3 class="datosAlum">Nombre del programa</h3>
+        <mat-form-field class="full">
+          <mat-select [formControl]="progControl" required>
+            <mat-option *ngFor="let programa of programas" [value]="programa">{{
+              programa.nombre
+            }}</mat-option>
+          </mat-select>
+          <mat-error *ngIf="progControl.hasError('required')">
+            Selecciona un sector al que pertenezca la empresa
+          </mat-error>
+        </mat-form-field>
+        <!-- Apoyo Economico -->
+        <h3 class="datosAlum">Apoyo economico</h3>
+        <!-- radios -->
+        <div style="text-align: center">
+          <mat-radio-group aria-label="apoyEcon">
+            <mat-radio-button value="1">Si</mat-radio-button>
+            <mat-radio-button value="0">No</mat-radio-button>
+          </mat-radio-group>
+        </div>
+        <!-- Template -->
+        <ng-template #datoEcon>
+          <!-- Campo Monto -->
+          <h3 class="datosAlum">Monto</h3>
+          <mat-form-field class="full" appearance="fill">
+            <mat-label>Monto total de apoyo</mat-label>
+            <input matInput placeholder="Total de monto que recibe" value="" />
+          </mat-form-field>
+          <!-- Campo estimulo -->
+          <h3 class="datosAlum">Estimulo</h3>
+          <mat-form-field class="full" appearance="fill">
+            <mat-label>Estimulo de pago </mat-label>
+            <input
+              matInput
+              placeholder="Pago semanal, quincenal, mensual"
+              value=""
+            />
+          </mat-form-field>
+        </ng-template>
+        <!-- Horario -->
+        <!-- Campo puesto -->
+      <h3 class="datosAlum">Horaio</h3>
+      <mat-form-field class="full" appearance="fill">
+        <mat-label>Horario en el que asiste al servicio </mat-label>
+        <input matInput placeholder="Ejem. Lun a vie de  8:00am a 1:00pm" value="">
+      </mat-form-field>
+
+        <!--  -->
+      </div>
+    </div>
+  </div>
+  <button
+    mat-icon-button
+    color="accent"
+    class="float-end"
+    style="font-size: 1.5em; margin: 0.75em"
+  >
+    Guardar
+    <mat-icon>save</mat-icon>
+  </button>
+  <!-- finForm -->
+</form>

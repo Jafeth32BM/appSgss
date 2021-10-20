@@ -1,0 +1,32 @@
+<mat-table [dataSource]="datosTabla" class="mat-elevation-z8">
+  <!-- Nombre Column -->
+  <ng-container matColumnDef="nombre">
+    <mat-header-cell *matHeaderCellDef> Archivo </mat-header-cell>
+    <mat-cell *matCellDef="let docu"> {{docu.nombre}} </mat-cell>
+  </ng-container>
+
+  <!-- Estado Column -->
+  <ng-container matColumnDef="estado">
+    <mat-header-cell *matHeaderCellDef> Status documento </mat-header-cell>
+    <mat-cell *matCellDef="let docu"> {{docu.estado}} </mat-cell>
+  </ng-container>
+
+  <!-- Ruta Column -->
+  <ng-container matColumnDef="ruta">
+    <mat-header-cell *matHeaderCellDef> Ruta </mat-header-cell>
+    <mat-cell *matCellDef="let docu"> {{docu.ruta}} </mat-cell>
+  </ng-container>
+
+  <!-- acciones Column -->
+  <ng-container matColumnDef="acciones">
+    <mat-header-cell *matHeaderCellDef> Cargar/Actualizar </mat-header-cell>
+    <mat-cell *matCellDef="let docu">
+      <button mat-icon-button color="accent" class="float-end">
+        <mat-icon>save</mat-icon>
+      </button>
+    </mat-cell>
+  </ng-container>
+
+  <mat-header-row *matHeaderRowDef="columnsOrder"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: columnsOrder;"></mat-row>
+</mat-table>

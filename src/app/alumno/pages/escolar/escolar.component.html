@@ -1,0 +1,145 @@
+<h3 class="datosAlum">Algun titulo</h3>
+
+<div class="container">
+  <div class="row">
+    <div class="col" style="text-align: center">
+      <h3 class="datosAlum">No. Registro</h3>
+      <p class="getDatos">{{ alumn.noregistro | titlecase }}</p>
+      <h3 class="datosAlum">CURP</h3>
+      <p class="getDatos">{{ alumn.curp | uppercase }}</p>
+      <h3 class="datosAlum">Matricula</h3>
+      <p class="getDatos">Matricula</p>
+    </div>
+    <div class="col">
+      <h3 class="datosAlum">Apellido Paterno</h3>
+      <p class="getDatos">{{ alumn.apaterno | titlecase }}</p>
+      <h3 class="datosAlum">Apellido Materno</h3>
+      <p class="getDatos">{{ alumn.amaterno | titlecase }}</p>
+      <h3 class="datosAlum">Nombre(s)</h3>
+      <p class="getDatos">{{ alumn.nombres | titlecase }}</p>
+    </div>
+    <hr />
+    <form [formGroup]="escolarForm" (ngSubmit)="guardar()">
+      <div class="row">
+        <!-- PARTE 1 -->
+        <div class="col-sm">
+          <!-- CARRERA -->
+          <h3>Carrera</h3>
+          <mat-form-field class="full" appearance="fill">
+            <mat-select required [(value)]="carr" formControlName="carre">
+              <mat-option>Seleciona tu carrera</mat-option>
+              <mat-option *ngFor="let carrera of carreras" [value]="carrera">{{
+                carrera
+              }}</mat-option>
+            </mat-select>
+            <mat-error *ngIf="campoValido('carre')">
+              *Selecciona tu carrera
+            </mat-error>
+          </mat-form-field>
+          <!-- SISS -->
+          <h3>SISS</h3>
+          <mat-radio-group
+            aria-label="siss"
+            formControlName="siss"
+            appearance="fill"
+          >
+            <mat-radio-button value="1">Si</mat-radio-button>
+            <mat-radio-button value="0">No</mat-radio-button>
+          </mat-radio-group>
+          <mat-error *ngIf="campoValido('siss')">
+            *Indica si cuentas con SISS
+          </mat-error>
+          <div>
+            <h1></h1>
+          </div>
+          <!-- FECHA INICIO -->
+          <h3>Fecha de inicio</h3>
+          <mat-form-field calss="full" appearance="fill">
+            <input
+              matInput
+              autocomplete="off"
+              [matDatepicker]="fInicio"
+              formControlName="finicio"
+            />
+            <mat-datepicker-toggle
+              matSuffix
+              [for]="fInicio"
+            ></mat-datepicker-toggle>
+            <mat-datepicker #fInicio></mat-datepicker>
+          </mat-form-field>
+          <mat-error *ngIf="campoValido('finicio')">
+            *Selecciona la fecha de inicio
+          </mat-error>
+        </div>
+        <!-- PARTE 2 -->
+        <div class="col-sm">
+          <!-- PROMEDIO -->
+          <h3>Promedio</h3>
+          <mat-form-field class="full" appearance="fill">
+            <mat-label>Promedio</mat-label>
+            <input
+              matInput
+              formControlName="promedio"
+              placeholder="Ingresa tu promedio"
+              value=""
+            />
+          </mat-form-field>
+          <mat-error *ngIf="campoValido('promedio')">
+            *Introduce tu promedio
+          </mat-error>
+          <!--PORCENTAJE -->
+          <h3 class="datosAlum">Porcentaje</h3>
+          <mat-form-field class="full" appearance="fill">
+            <mat-label>Porcentaje</mat-label>
+            <input
+              matInput
+              formControlName="porcentaje"
+              placeholder="Ingresa tu porcentaje"
+              value=""
+            />
+          </mat-form-field>
+          <mat-error *ngIf="campoValido('porcentaje')">
+            *Introduce tu porcentaje
+          </mat-error>
+          <!-- FECHA FIN -->
+          <h3 class="datosAlum">Fecha de termino</h3>
+          <mat-form-field appearance="fill">
+            <input
+              matInput
+              formControlName="ftermino"
+              [matDatepicker]="ftermino"
+            />
+            <mat-datepicker-toggle
+              matSuffix
+              [for]="ftermino"
+            ></mat-datepicker-toggle>
+            <mat-datepicker #ftermino></mat-datepicker>
+          </mat-form-field>
+          <mat-error *ngIf="campoValido('ftermino')">
+            *Selecciona la fecha de termino
+          </mat-error>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <button
+            mat-icon-button
+            color="primary"
+            class="float-end"
+            style="font-size: 1.5em; margin: 0.75em"
+          >
+            Guardar
+            <mat-icon>save</mat-icon>
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- <span>Valor del formulario</span>
+<pre> {{ escolarForm.value | json }}</pre>
+<span>Valid</span>
+<pre>{{ escolarForm.valid }}</pre>
+<span>Valor de CARRE</span>
+<pre>{{ carr | json }}</pre> -->
